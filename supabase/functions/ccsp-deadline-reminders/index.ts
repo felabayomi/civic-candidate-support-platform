@@ -68,6 +68,18 @@ const resendApiKey = Deno.env.get('RESEND_API_KEY')
 const reminderFromEmail = Deno.env.get('REMINDER_FROM_EMAIL')
 const cronSecret = Deno.env.get('CRON_SECRET')
 
+const DEFAULT_FROM_DISPLAY_NAME = 'Civicos Candidate Platform'
+
+const resolveReminderFromAddress = (value: string | undefined) => {
+    if (!value) return null
+    const trimmed = value.trim()
+    if (!trimmed) return null
+    if (trimmed.includes('<') && trimmed.includes('>')) return trimmed
+    return `${DEFAULT_FROM_DISPLAY_NAME} <${trimmed}>`
+}
+
+const reminderFromAddress = resolveReminderFromAddress(reminderFromEmail)
+
 if (!supabaseUrl || !supabaseServiceRoleKey) {
     throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required.')
 }
@@ -246,7 +258,7 @@ const recordDelivery = async (
 }
 
 const sendReminderEmail = async (target: ReminderTarget) => {
-    if (!resendApiKey || !reminderFromEmail) {
+    if (!resendApiKey || !reminderFromAddress) {
         return {
             ok: false,
             error: 'RESEND_API_KEY and REMINDER_FROM_EMAIL are required for live sends.',
@@ -261,7 +273,7 @@ const sendReminderEmail = async (target: ReminderTarget) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            from: reminderFromEmail,
+            from: reminderFromAddress,
             to: [target.recipientEmail],
             subject: buildSubject(target),
             text: buildTextBody(target),
@@ -287,7 +299,7 @@ const sendReminderEmail = async (target: ReminderTarget) => {
 }
 
 const sendGenericEmail = async (payload: { to: string; subject: string; text: string; html: string }) => {
-    if (!resendApiKey || !reminderFromEmail) {
+    if (!resendApiKey || !reminderFromAddress) {
         return {
             ok: false,
             error: 'RESEND_API_KEY and REMINDER_FROM_EMAIL are required for live sends.',
@@ -302,7 +314,7 @@ const sendGenericEmail = async (payload: { to: string; subject: string; text: st
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            from: reminderFromEmail,
+            from: reminderFromAddress,
             to: [payload.to],
             subject: payload.subject,
             text: payload.text,
