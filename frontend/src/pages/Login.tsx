@@ -31,7 +31,7 @@ function Login() {
                 setEmail('')
                 setPassword('')
                 setIsSignUp(false)
-                setError('Check your email to confirm your account. If you do not see it, check your spam/junk folder and mark the noreply sender as Not Spam.')
+                setError('Check your email to confirm your account. If you do not see it, check your spam/junk folder and mark no-reply@civicos.pro as Not Spam.')
             } else {
                 await signIn(email, password)
                 setShouldRedirectAfterSignIn(true)
