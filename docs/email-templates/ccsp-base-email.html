@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCSP CivicOS Notification</title>
+    <style>
+        :root {
+            --ccsp-primary: #0f4c81;
+            --ccsp-primary-dark: #0b3c65;
+            --ccsp-accent: #e0a100;
+            --ccsp-ink: #0f172a;
+            --ccsp-surface: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            background: var(--ccsp-surface);
+            color: var(--ccsp-ink);
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+        }
+
+        .wrap {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 24px 12px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #dbe3ee;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(120deg, var(--ccsp-primary-dark), var(--ccsp-primary));
+            color: #ffffff;
+            padding: 18px 20px;
+        }
+
+        .header .brand {
+            margin: 0;
+            font-family: 'Manrope', 'Segoe UI', sans-serif;
+            font-size: 16px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-family: 'Manrope', 'Segoe UI', sans-serif;
+            font-size: 24px;
+        }
+
+        p {
+            margin: 0 0 12px;
+            line-height: 1.5;
+            font-size: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 10px 0 14px;
+            padding: 10px 14px;
+            background: var(--ccsp-accent);
+            color: #1f2937;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .footer {
+            border-top: 1px solid #e2e8f0;
+            color: #475569;
+            font-size: 12px;
+            padding: 14px 20px 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <article class="card">
+            <header class="header">
+                <p class="brand">CCSP CivicOS</p>
+                <p style="margin: 6px 0 0; font-size: 13px; opacity: 0.9;">Civic Candidate Support Platform</p>
+            </header>
+
+            <main class="content">
+                <h1>{{EMAIL_TITLE}}</h1>
+                <p>Hello {{RECIPIENT_NAME}},</p>
+                <p>{{EMAIL_BODY_INTRO}}</p>
+                <p>{{EMAIL_BODY_DETAILS}}</p>
+                <a class="button" href="{{ACTION_URL}}">{{ACTION_LABEL}}</a>
+                <p>If the button does not work, copy and paste this URL into your browser:</p>
+                <p>{{ACTION_URL}}</p>
+            </main>
+
+            <footer class="footer">
+                <p style="margin: 0 0 4px;">This message was sent by CCSP CivicOS, a nonpartisan campaign operations and
+                    compliance readiness platform.</p>
+                <p style="margin: 0;">Need help? Contact support@felixplatform.com</p>
+            </footer>
+        </article>
+    </div>
+</body>
+
+</html>

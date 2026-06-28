@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: CCSP API
+  version: 0.1.0
+  description: MVP API for Civic Candidate Support Platform.
+servers:
+  - url: https://api.example.com
+paths:
+  /auth/register:
+    post:
+      summary: Register candidate account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: Account created
+  /auth/login:
+    post:
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful
+  /candidate/profile:
+    get:
+      summary: Get candidate profile
+      responses:
+        '200':
+          description: Profile payload
+    put:
+      summary: Create or update candidate profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CandidateProfile'
+      responses:
+        '200':
+          description: Profile updated
+  /checklist:
+    get:
+      summary: Get candidate checklist
+      responses:
+        '200':
+          description: Checklist items
+  /checklist/{itemId}/status:
+    patch:
+      summary: Update checklist item status
+      parameters:
+        - in: path
+          name: itemId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Status updated
+  /deadlines:
+    get:
+      summary: List campaign finance deadlines
+      responses:
+        '200':
+          description: Deadlines list
+  /treasurers:
+    get:
+      summary: List treasurer records
+      responses:
+        '200':
+          description: Treasurer list
+    post:
+      summary: Create treasurer record
+      responses:
+        '201':
+          description: Treasurer created
+  /treasurers/assign:
+    post:
+      summary: Assign active treasurer to candidate
+      responses:
+        '200':
+          description: Treasurer assigned
+  /documents:
+    get:
+      summary: List document records
+      responses:
+        '200':
+          description: Documents list
+    post:
+      summary: Upload document metadata
+      responses:
+        '201':
+          description: Document created
+  /transactions:
+    get:
+      summary: List donations and expenses
+      responses:
+        '200':
+          description: Transaction list
+    post:
+      summary: Create donation or expense
+      responses:
+        '201':
+          description: Transaction created
+  /reminders:
+    get:
+      summary: List reminder jobs and statuses
+      responses:
+        '200':
+          description: Reminder list
+components:
+  schemas:
+    RegisterRequest:
+      type: object
+      required: [email, password, fullName]
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+        fullName:
+          type: string
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+    CandidateProfile:
+      type: object
+      required: [officeTitle, jurisdiction]
+      properties:
+        campaignName:
+          type: string
+        officeTitle:
+          type: string
+        jurisdiction:
+          type: string
+        electionDate:
+          type: string
+          format: date
+        partyAffiliation:
+          type: string
