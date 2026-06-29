@@ -39,8 +39,11 @@ function Navbar({ items, onPrefetchRoute }: NavbarProps) {
                         <img
                             src="/logo-ccsp-civicos.svg"
                             alt="CCSP CivicOS"
-                            className="mb-2 h-9 w-auto"
-                            loading="lazy"
+                            width={180}
+                            height={45}
+                            className="mb-2 h-9 w-36"
+                            fetchPriority="high"
+                            decoding="async"
                         />
                         <p className="mt-1 text-xl font-semibold tracking-tight text-slate-900">Civic Candidate Support Platform</p>
                     </div>

@@ -61,8 +61,11 @@ function Landing() {
                     <img
                         src="/logo-ccsp-civicos.svg"
                         alt="CCSP CivicOS"
-                        className="h-8 w-auto"
-                        loading="lazy"
+                        width={160}
+                        height={40}
+                        className="h-8 w-32"
+                        fetchPriority="high"
+                        decoding="async"
                     />
                     <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">CCSP CivicOS</span>
                 </div>

@@ -5,6 +5,7 @@ import PublicFooter from './components/PublicFooter'
 import { useAuth } from './lib/authContext'
 import { ProtectedRoute } from './lib/protectedRoute'
 import { RoleProtectedRoute } from './lib/roleProtectedRoute'
+import LandingPage from './pages/LandingPage'
 
 const loadAdminConsole = () => import('./pages/AdminConsole')
 const loadAIComplianceAssistant = () => import('./pages/AIComplianceAssistant')
@@ -21,7 +22,6 @@ const loadExpenses = () => import('./pages/Expenses')
 const loadFilingValidation = () => import('./pages/FilingValidation')
 const loadHelp = () => import('./pages/Help')
 const loadLogin = () => import('./pages/Login')
-const loadLandingPage = () => import('./pages/LandingPage')
 const loadLegalDisclaimer = () => import('./pages/LegalDisclaimer')
 const loadPrivacyPolicy = () => import('./pages/PrivacyPolicy')
 const loadReports = () => import('./pages/Reports')
@@ -49,7 +49,6 @@ const Expenses = lazy(loadExpenses)
 const FilingValidation = lazy(loadFilingValidation)
 const Help = lazy(loadHelp)
 const Login = lazy(loadLogin)
-const LandingPage = lazy(loadLandingPage)
 const LegalDisclaimer = lazy(loadLegalDisclaimer)
 const PrivacyPolicy = lazy(loadPrivacyPolicy)
 const Reports = lazy(loadReports)
@@ -63,7 +62,6 @@ const VolunteerProfile = lazy(loadVolunteerProfile)
 const Welcome = lazy(loadWelcome)
 
 const preloadableRoutes: Record<string, () => Promise<unknown>> = {
-  '/': loadLandingPage,
   '/login': loadLogin,
   '/privacy': loadPrivacyPolicy,
   '/terms': loadTermsOfUse,
