@@ -81,6 +81,31 @@ export default function LandingPage() {
                             </p>
                         </div>
                     </div>
+
+                    <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-700">Full Civic Campaign Toolkit</p>
+                        <p className="mt-2 text-sm text-slate-600">
+                            Explore companion tools for election forecasting and campaign messaging.
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            <a
+                                href="https://electionpredictor.net/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-slate-100"
+                            >
+                                ElectionPredictor
+                            </a>
+                            <a
+                                href="https://campaignsignal.us/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-900 hover:bg-slate-100"
+                            >
+                                Campaign Signal Studio
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
