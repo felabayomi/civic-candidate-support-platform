@@ -89,6 +89,15 @@ function Navbar({ items, onPrefetchRoute }: NavbarProps) {
                 >
                     Election Prediction
                 </a>
+                <a
+                    href="https://campaignsignal.us/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMobileNav}
+                    className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
+                >
+                    Campaign Signal Studio
+                </a>
             </nav>
 
             {!isAdmin ? (
